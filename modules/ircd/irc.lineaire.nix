@@ -2,6 +2,9 @@
   acmeDirectory = config.security.acme.certs."lineaire.moe".directory;
 in
   {
+  services.nginx = {
+      enable = true;
+  };
   services.nginx.virtualHosts."lineaire.moe" = {
     http2 = false;
     enableACME = true;
@@ -175,5 +178,5 @@ in
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 6697 6698 ];
+  networking.firewall.allowedTCPPorts = [ 6697 6698 80 443 ];
 }

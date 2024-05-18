@@ -1,0 +1,5 @@
+{ ... }: {
+  imports = [
+    ./irc.lineaire.nix
+  ];
+}

@@ -5,12 +5,13 @@
   ...
 }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ../modules/ircd ];
 
   zramSwap.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
   networking.hostName = "lina";
+  security.acme.acceptTerms = true;
 
   services.openssh.enable = true;
   services.qemuGuest.enable = true;
