@@ -1,17 +1,21 @@
-{ config, lib, pkgs, ... }: {
-	imports = [
-		./hardware-configuration.nix
-	];
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [ ./hardware-configuration.nix ];
 
-	zramSwap.enable = true;
-	security.sudo.wheelNeedsPassword = false;
+  zramSwap.enable = true;
+  security.sudo.wheelNeedsPassword = false;
 
-	networking.hostName = "lina";
+  networking.hostName = "lina";
 
-	services.openssh.enable = true;
-	services.qemuGuest.enable = true;
+  services.openssh.enable = true;
+  services.qemuGuest.enable = true;
 
-	systemd.network.enable = true;
+  systemd.network.enable = true;
 
   systemd.network.networks."10-nat-lan" = {
     matchConfig.Name = "nat-lan";
@@ -35,9 +39,12 @@
     linkConfig.Name = "wan";
   };
 
-	users.mutableUsers = false;
-	users.users.root = {
-		hashedPassword = "$y$j9T$/8iLMIzRTtbOFcYoZVMX50$OzP/C.4ytzi/WtQjKEp2JUw6bQxcCbT4xoedtLgDEJ0";
-		openssh.authorizedKeys.keyFiles = [ ./raito.keys ./janik.keys ];
-	};
+  users.mutableUsers = false;
+  users.users.root = {
+    hashedPassword = "$y$j9T$/8iLMIzRTtbOFcYoZVMX50$OzP/C.4ytzi/WtQjKEp2JUw6bQxcCbT4xoedtLgDEJ0";
+    openssh.authorizedKeys.keyFiles = [
+      ./raito.keys
+      ./janik.keys
+    ];
+  };
 }
