@@ -1,5 +1,29 @@
 {
   "pins": {
+    "nixos-dns": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Janik-Haag",
+        "repo": "NixOS-DNS"
+      },
+      "branch": "main",
+      "revision": "c4f734d771038db15700a61a8703d0da5f993b3a",
+      "url": "https://github.com/Janik-Haag/NixOS-DNS/archive/c4f734d771038db15700a61a8703d0da5f993b3a.tar.gz",
+      "hash": "0dk92lhc7z0agq38dfjn6cfksa4hjwr6mrdzxcycklz3n93d2d3h"
+    },
+    "colmena": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "zhaofengli",
+        "repo": "colmena"
+      },
+      "branch": "main",
+      "revision": "cd65ef7a25cdc75052fbd04b120aeb066c3881db",
+      "url": "https://github.com/zhaofengli/colmena/archive/cd65ef7a25cdc75052fbd04b120aeb066c3881db.tar.gz",
+      "hash": "0n1j499702iclz4hdb4ywvmn8rl4d1mbdf43dwm7lvpjq5pjjqc1"
+    },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",

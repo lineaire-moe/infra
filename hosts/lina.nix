@@ -16,6 +16,16 @@
   services.openssh.enable = true;
   services.qemuGuest.enable = true;
 
+  networking.domains = {
+    enable = true;
+    baseDomains = {
+      "lineaire.moe" = {
+        aaaa.data = "2001:bc8:38ee:100:500::1";
+      };
+    };
+  };
+
+
   systemd.network.enable = true;
 
   systemd.network.networks."10-nat-lan" = {
