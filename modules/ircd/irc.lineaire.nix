@@ -1,16 +1,21 @@
 { config, lib, ... }: let
-  acmeDirectory = config.security.acme.certs."lineaire.moe".directory;
+  domain = "lineaire.moe";
+  acmeDirectory = config.security.acme.certs."${domain}".directory;
 in
   {
+  networking.domains.subDomains.${domain} = {
+    # the aaaa record is handled by the host
+    a.data = "163.172.69.160";
+  };
   services.nginx = {
       enable = true;
   };
-  services.nginx.virtualHosts."lineaire.moe" = {
+  services.nginx.virtualHosts."${domain}" = {
     http2 = false;
     enableACME = true;
     forceSSL = true;
   };
-  security.acme.certs."lineaire.moe" = {
+  security.acme.certs."${domain}" = {
     email = "lineaire-moe@lahfa.xyz";
   };
   systemd.services.ergochat.serviceConfig.ReadOnlyPaths = [
@@ -29,7 +34,7 @@ in
         type = "* -userinput -useroutput";
       } ];
       server = {
-        name = "lineaire.moe";
+        name = domain;
         listeners = lib.mkForce {
           "[::1]:6667" = { }; # (loopback ipv6, localhost-only)
           ":6697" = {
